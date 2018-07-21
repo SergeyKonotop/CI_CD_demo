@@ -1,0 +1,4 @@
+---
+external_port: 8083
+image_name: test-jimage
+registry_ip: 172.28.128.8
