@@ -28,6 +28,6 @@ node {
       archiveArtifacts 'target/*.jar'
       server.upload spec: uploadSpec, buildInfo: buildInfo
       server.publishBuildInfo buildInfo 
-      echo commitHash[0:6]
+      echo commitHash[0..6]
    }  
 }
