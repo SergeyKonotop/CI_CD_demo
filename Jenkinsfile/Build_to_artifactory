@@ -1,4 +1,5 @@
 node {
+   def commitHash = checkout(scm).GIT_COMMIT
    def mvnHome
    def server = Artifactory.server 'Artifactory_server'
    def buildInfo = Artifactory.newBuildInfo()
@@ -27,5 +28,6 @@ node {
       archiveArtifacts 'target/*.jar'
       server.upload spec: uploadSpec, buildInfo: buildInfo
       server.publishBuildInfo buildInfo 
+      echo commitHash
    }  
 }
