@@ -1,5 +1,5 @@
 node {
-   def commitHash = checkout(scm).GIT_COMMIT
+   def commitHash = checkout(scm).GIT_COMMIT[0:6]
    def mvnHome
    def server = Artifactory.server 'Artifactory_server'
    def buildInfo = Artifactory.newBuildInfo()
