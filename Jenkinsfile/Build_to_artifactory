@@ -7,7 +7,7 @@ node {
      "files": [
        {
           "pattern": "target/*.jar",
-          "target": "test_folder/$BUILD_ID/"
+          "target": "test_folder/${commitHash[0..6]}/"
         }
      ]
     }"""
@@ -28,6 +28,5 @@ node {
       archiveArtifacts 'target/*.jar'
       server.upload spec: uploadSpec, buildInfo: buildInfo
       server.publishBuildInfo buildInfo 
-      echo commitHash[0..6]
    }  
 }
