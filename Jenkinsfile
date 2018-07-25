@@ -42,4 +42,5 @@ node {
          inventory: './ansible/inv/QA',
          playbook: './ansible/playbook/QA.yml'
     )
+   } 
 }
