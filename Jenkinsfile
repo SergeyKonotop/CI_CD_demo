@@ -30,11 +30,10 @@ node {
       server.publishBuildInfo buildInfo
    }
    stage('Docker image build to registry') {
-//      sh "mv ./target/$Version/*.jar ./target/ -f"
       docker.withRegistry('http://172.28.128.8:5000') {
-       def testImage = docker.build("172.28.128.8:5000/test-jimage")
+       def testImage = docker.build("172.28.128.8:5000/CI-image")
         testImage.push()
-        sh "docker rmi 172.28.128.8:5000/test-jimage"
+        sh "docker rmi 172.28.128.8:5000/CI-image"
       }
    }
 
