@@ -27,6 +27,7 @@ node {
    stage('Put build to Artifactory') {
       archiveArtifacts 'target/*.jar'
       server.upload spec: uploadSpec, buildInfo: buildInfo
-      server.publishBuildInfo buildInfo 
+      server.publishBuildInfo buildInfo
+      sh 'echo hello'
    }  
 }
