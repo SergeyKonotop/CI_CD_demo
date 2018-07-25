@@ -28,6 +28,19 @@ node {
       archiveArtifacts 'target/*.jar'
       server.upload spec: uploadSpec, buildInfo: buildInfo
       server.publishBuildInfo buildInfo
-      sh 'echo hello'
-   }  
+   }
+   stage('Docker image build to registry') {
+//      sh "mv ./target/$Version/*.jar ./target/ -f"
+      docker.withRegistry('http://172.28.128.8:5000') {
+       def testImage = docker.build("172.28.128.8:5000/test-jimage")
+        testImage.push()
+        sh "docker rmi 172.28.128.8:5000/test-jimage"
+      }
+   }
+
+   stage('Deploy') { // for display purposes
+       ansiblePlaybook(
+         inventory: './ansible/inv/CI',
+         playbook: './ansible/playbook/CI.yml'
+    )
 }

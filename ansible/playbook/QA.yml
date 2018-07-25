@@ -1,6 +1,0 @@
----
-- name: install QA server
-  hosts: QA 
-  sudo: yes
-  roles:
-       - QA

@@ -1,6 +1,0 @@
----
-- name: install DevTools
-  hosts: DevTools
-  sudo: yes
-  roles:
-       - DevTools
