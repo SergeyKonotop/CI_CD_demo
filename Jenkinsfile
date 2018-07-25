@@ -43,4 +43,5 @@ node {
          inventory: './ansible/inv/CI',
          playbook: './ansible/playbook/CI.yml'
     )
+   } 
 }
