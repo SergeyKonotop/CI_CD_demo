@@ -28,5 +28,18 @@ node {
       archiveArtifacts 'target/*.jar'
       server.upload spec: uploadSpec, buildInfo: buildInfo
       server.publishBuildInfo buildInfo 
-   }  
+   }
+   stage('Docker image build to registry') {
+      docker.withRegistry('http://172.28.128.8:5000') {
+       def testImage = docker.build("172.28.128.8:5000/test-jimage")
+        testImage.push()
+        sh "docker rmi 172.28.128.8:5000/test-jimage "
+      }
+   }
+
+   stage('Deploy') { // for display purposes
+      ansiblePlaybook(
+         inventory: './ansible/inv/QA',
+         playbook: './ansible/playbook/QA.yml'
+    )
 }

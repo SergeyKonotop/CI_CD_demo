@@ -1,6 +1,0 @@
----
-- name: install CI
-  hosts: CI
-  sudo: yes
-  roles:
-       - CI
