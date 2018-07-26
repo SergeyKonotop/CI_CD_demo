@@ -31,9 +31,9 @@ node {
    }
    stage('Docker image build to registry') {
       docker.withRegistry('http://172.28.128.8:5000') {
-       def testImage = docker.build("172.28.128.8:5000/test-jimage")
+       def testImage = docker.build("172.28.128.8:5000/qa-image")
         testImage.push()
-        sh "docker rmi 172.28.128.8:5000/test-jimage "
+        sh "docker rmi 172.28.128.8:5000/qa-image "
       }
    }
 
